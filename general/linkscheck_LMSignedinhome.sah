@@ -1,0 +1,37 @@
+_include("../LM/function_lib.sah");
+_include("../LM/lm_repos.sah");
+
+var $url;
+_set($url, window.document.location.href);
+_navigateTo($url);
+
+if ($url.indexOf("staging")!=-1)
+    {
+    fnClareityLogin("00859506", "password1");
+    }
+else{
+	fnNonClareityLogin("00859506", "password1");
+    }
+
+var $links= _collectAttributes("_link","/.*/","href");
+_log("len: "+$links.length);
+
+for(var $i=0;$i<$links.length;$i++){
+    _log("link is :"+$links[$i]);
+        try{
+    $request = new RESTRequest();
+    $request.setURL($links[$i]);
+    $response = $request.submit("get");
+    var $s = $response.getResponseCode();
+    if($s==404){
+        _log($links[$i]+"  is broken ","FAILURE");
+    }
+    else{
+            _log($links[$i]+"  is fine ","SUCCESS");
+            _log($s);
+        }
+}
+    catch($e){
+        _log("link "+[$i]+ " is not valid");    
+}
+}

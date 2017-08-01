@@ -1,0 +1,51 @@
+_include("../function_lib.sah");
+_include("../lm_repos.sah");
+
+var $url;
+_set($url, window.document.location.href);
+if ($url.indexOf("staging")!=-1)
+    {
+    fnClareityLogin("00859506", "password1");
+	//fnNonClareityLogin("00859506", "password1");
+	var $dbServer = "172.40.3.152";
+    }
+else{
+	fnNonClareityLogin("00859506", "password1");
+	var $dbServer = "172.20.5.91";
+    }
+var $dbUser = "developers";
+var $dbPass = "devpassword";
+var $dbName = "SPEProperty"; 
+var $db = _getDB("com.microsoft.sqlserver.jdbc.SQLServerDriver","jdbc:sqlserver://"+$dbServer+";databaseName="+$dbName+"", $dbUser, $dbPass);
+ 
+// get all rows from a table...
+var $rows = $db.select("select top 1 a.filteredaddress+', '+ a.cityname+', '+a.stateorprovincename+', '+ a.postalcode  " +
+"from vProperty a join (select parcelnumber, count(propertyid) as tcnt from vProperty where countyid = 43  " +
+"group by parcelnumber  " +
+"having count(propertyid)=1) b   " +
+"on a.parcelnumber = b.parcelnumber and  subclass=101 and a.listingstatus = 5"); 
+
+var $resultSet = $rows[0];
+var $fulladdress = $resultSet[0];
+
+_click($_LINK_MY_LISTINGS);
+_selectWindow("My Listings");
+_click($_BUTTON_ADD_LISTING_1);
+_click($_LINK_NEW_EXCLUSION);
+
+fnSelectPropertyClass("Residential");
+fnSelectPropertyType("Single Family Home");
+_selectWindow("New Exclusion");
+
+fnAutoSelectListingOffice(1);
+fnAutoSelectListingAgent(1);
+fnAutoEnterExclusionDate();
+fnAutoEnterListingExpirationDate("12/01/2017");
+
+_setValue($_TEXTBOX_MAP_LOCATION, $fulladdress);
+_click($_EXCLUSION_TAX_SEARCH);
+_click($_SUBMIT_IMPORT_TAX_DATA );	
+_click($_EXCLUSION_CHECKBOX );
+_click($_CREATE_EXCLUSION);
+_click($_EXCLUSION_OK_MSG);
+

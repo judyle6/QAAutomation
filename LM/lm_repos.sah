@@ -1,0 +1,389 @@
+//mlspro
+var $_PRO = _link("Pro");
+var $_LINK_MATRIX = _link("Matrix");
+var $_TRAINING = _link("Training");
+var $_SUPPORT = _link("Support");
+var $_NEWS = _link("News");
+var $_CONTACT_US = _link("Contact Us");
+var $_CHANGE_USER = _link("Change User");
+var $_MY_PRODUCTS = _link("My Products");
+var $_STORE = _link("Store");
+var $_NEWS_1 = _link("News[1]");
+var $_MY_INFO = _link("My Info");
+var $_PAY_MY_BILL = _link("Pay My Bill");
+var $_BROKER_CENTER = _link("Broker Center");
+
+var $_BAREIS_MLS = _image("List and Search in Napa, Sonoma and surrounding North Bay areas"); //BAREIS MLS
+var $_CRMLS = _image("Search listings from 33 Associations throughout CA, primarily in southern CA"); //CRMLS
+var $_EAST_BAY_MAXEBRD = _image("List and Search from 3 MLSs in East Bay"); //East Bay MAXEBRD
+var $_METROLIST = _image("List and Search in Sacramento and surrounding areas"); //Metrolist
+var $_NCAR = _image("List and Search in Nevada County"); //NCAR
+var $_SFAR_MLS = _image("List and Search in San Francisco"); //SFAR MLS
+
+var $_CLAW_MLS = _image("Search in Los Angeles/Westside areas as a guest (one account for MLSListings)"); //CLAW MLS
+var $_SANDICOR = _image("Search in San Diego and surrounding areas as a guest (one account for MLSListings)"); //Sandicor
+	
+var $_MATRIX_DASHBOARD = _div("ResidentialSearch"); //Matrix dashboard
+var $_AGENT_SEARCH = _div("AgentSearch");
+var $_OFFICE_SEARCH = _div("OfficeSearch");
+var $_COMING_SOON = _div("ComingSoon");
+
+var $_MLS_ANNOUNCEMENTS = _span("MLS Announcements");
+var $_MY_MESSAGES = _span("My Messages");
+
+var $_MATRIX_SEARCH = _image("Matrix");
+var $_MANAGE_LISTINGS = _image("Listing management system");
+var $_REALIST_II = _image("Tax records");
+var $_RPR_RECORDS_SEARCH = _image("REALTORS Property Resource(TM)");
+var $_FIND_RECORDS_SEARCH = _image("FIND Records Search");
+var $_LISTTRAC_MM = _image("Free with your membership! Find out where buyers are interacting with your real estate listings."); //ListTrac M&M
+var $_MLS_APPS_STORE = _image("Products to make your life easier"); //MLS Apps Store
+var $_NEW_HOME_SOURCE_PRO = _image("New Home Source Pro");
+var $_RE_TECHNOLOGY = _image("RE Technology");
+var $_TRAINING_LM = _image("Training");
+var $_HOMEPATH = _image("Short Sale Assistance");
+
+//LM
+
+var $_IMAGESUBMITBUTTON_SIGN_IN = _imageSubmitButton("Sign In");
+var $_USERNAME = _textbox("j_username");
+var $_PASSWORD = _textbox("password");
+var $_CLAREITY_LOG_IN = _button("SIGN IN");
+var $_USERNAME_MLS = _textbox("User ID: (Lic #)");
+var $_PASSWORD_MLS = _password("Password:");
+var $_LOG_IN = _imageSubmitButton("Log In");
+var $_LINK_SIGN_OUT = _link("Sign Out");
+var $_LINK_MY_LISTINGS = _link("My Listings");
+var $_BUTTON_ADD_LISTING_1 = _button("Add Listing[1]");
+var $_LINK_NEW_EXCLUSION = _link("New Exclusion[1]");
+var $_LINK_NEW_LISTING_1 = _link("New Listing[1]");
+var $_LINK_SELECT_A_CLASS = _link("Select a Class");
+//var $_LINK_RESIDENTIAL = _link("Residential");
+//var $_LINK_SINGLE_FAMILY_HOME = _link("Single Family Home");
+var $_LINK_SHOW_REQUIRED_FIELDS_ONLY = _link("Show Required Fields Only");
+var $_TEXTBOX_MAP_LOCATION = _textbox("map_location");
+var $_EXCLUSION_TAX_SEARCH = _button("Search[1]");
+var $_EXCLUSION_DATE = _textbox("Exclusion Date");
+var $_LISTING_EXPIRATION_DATE =_textbox("Listing Expiration Date");
+var $_EXCLUSION_CHECKBOX = _checkbox("echeckbox");
+var $_CREATE_EXCLUSION = _submit("createexclusion");
+var $_EXCLUSION_OK_MSG = _link("OK[1]");
+
+//*************Start a Listing******************
+var $_PROP_TYPE = _select("/(.*)142994/");
+var $_BUILDING_TYPE = _select("/(.*)246/"); //_select("1593-246");
+var $_OWNERSHIP_TYPE = _select("/(.*)2634/", _near(_label("Ownership Type"))); //47-2634
+var $_LISTING_OFFICE = _select("/(.*)2138/");  //_select("62-2138"); 
+var $_LISTING_AGENT = _select("/(.*)1952/"); //_select("48-1952"); 
+var $_CO_LISTING_OFFICE = _select("/(.*)631/", _near(_label("Co-Listing Office"))); //64-631
+var $_CO_LISTING_AGENT = _select("/(.*)518/", _near(_label("Co-Listing Agent"))); //49-518
+
+var $_SUBMIT_NEXT_STEP = _submit("Next Step");
+
+//**************Property Overview*****************
+var $_TEXTBOX_MAPPARCEL = _textbox("map_parcel");
+var $_NUMBERBOX_MAPZIP = _numberbox("/(.*)-2774/"); //_numberbox("map_zip");
+var $_NUMBERBOX_MAPCOUNTY = _select("/(.*)-1028/"); // _select("map_county", _near(_label("County")));
+var $_BUTTON_GET_TAX_DATA = _button("Get Tax Data", _near(_label("County")));
+var $_TEXTBOX_MAPNUMBER = _textbox("map_number", _near(_label("Street Number")));  // _textbox("map_number");
+var $_TEXTBOX_MAPSTREET = _textbox("map_street", _near(_label("Street Name"))); //_textbox("map_street");
+var $_SELECT_MAPCITY = _select("map_city");
+var $_SELECT_STATE = _select("map_state");
+var $_TEXTBOX_MAPLOTSQFT = _textbox("map_lotsqft");
+var $_NUMBERBOX_MAPBEDROOMS = _numberbox("map_bedrooms");
+var $_NUMBERBOX_MAPFULLBATHS = _numberbox("map_fullbaths");
+var $_TEXTBOX_MAPBUILDINGSQFT = _textbox("map_buildingsqft");
+var $_NUMBERBOX_MAPYEARBUILT = _numberbox("map_yearbuilt");
+var $_TEXTBOX_MAPZONING = _textbox("map_zoning");
+var $_TEXTBOX_MAPAREA = _textbox("map_area");
+var $_SELECT_ELEMENTARYSCHOOLDISTRICT = _select("elementarySchoolDistrict");
+var $_SELECT_HIGHSCHOOLDISTRICT = _select("highSchoolDistrict");
+var $_CROSS_STREET = _textbox("/(.*)1039/", _near(_label("Cross Street"))); //209-1039
+
+var $_TEXTBOX_OWNER = _textbox("map_owner");
+var $_SELECT_STREET_PREFIX = _select("map_prefix");
+var $_SELECT_STREET_SUFFIX = _select("map_suffix");
+var $_TEXTBOX_UNIT_NUM = _textbox("map_unit");
+var $_TEXTBOX_BUILDING_NUM = _textbox("map_buildingnumber");
+var $_TEXTBOX_MODEL_NAME = _textbox("map_modelname");
+var $_TEXTBOX_LOT_ACRES = _textbox("map_lot");
+var $_TEXTBOX_STORIES = _numberbox("map_stories");
+var $_TEXTBOX_FLOORS = _numberbox("map_floorsinbuilding");
+var $_TEXTBOX_UNIT_FLOOR = _numberbox("map_unitfloornumber");
+var $_TEXTBOX_TOTAL_UNITS = _numberbox("map_unitsinbuilding");
+var $_SELECT_PROPERTY_FACES = _select("50-2820");
+var $_SELECT_UNIT_FEATURES = _list("select2-choices", _near(_label("Unit Features")));
+var $_TEXTBOX_PARTIAL_BATHS = _numberbox("map_halfbaths");
+var $_SELECT_SECONDARY_LIVING_DESC = _list("select2-choices", _near(_label("Secondary Living Space Description")));
+var $_SELECT_SECONDARY_LIVING_SQFT = _numberbox("map_secondarybuildingsqft");
+var $_TEXTBOX_LAND_USE = _textbox("map_landuse");
+var $_SELECT_ELEM_SCHOOL = _select("elementarySchoolID");
+var $_SELECT_MIDDLE_SCHOOL = _select("middleSchoolID");
+var $_SELECT_HIGH_SCHOOL = _select("highSchoolID");
+var $_SELECT_PROP_CITY_LIMITS = _select("/(.*)291/", _near(_label("Is property within City Limits?"))); //207-291
+var $_SELECT_PROP_INCORPORATED_AREA = _select("/(.*)1583/", _near(_label("Is property in an Incorporated area?"))); //208-1583
+var $_TEXTBOX_DIRECTIONS = _textbox("Directions");
+
+var $_SUBMIT_NEXT_STEP_1 = _submit("Next Step[1]");
+
+//**********Listing Details
+var $_LISTING_STATUS = _select("/(.*)2159/", _near(_label("Listing Status"))); //179-2159
+var $_TEXTBOX_LIST_DATE = _textbox("List Date", _near(_label("List Date"))); 
+var $_CLOSE_CALENDAR = _label("Listing Status");
+var $_TEXTBOX_LIST_PRICE = _textbox("List Price", _near(_label("List Price")));
+var $_TEXTBOX_EXPIRE_DATE = _textbox("Expiration Date", _near(_label("Expiration Date")));
+var $_SELECT_SPECIAL_LISTING_CONDITION = _select("/(.*)284905/", _near(_label("Special Listing Conditions"))); //51-284905
+
+//non-required fields
+var $_SELECT_POINT_OF_SALE_ORDINANCE = _select("/(.*)2738/", _near(_label("Point of Sale Ordinance"))); //55-2738
+var $_SELECT_CITY_TRANSFER_TAX = _select("/(.*)295/", _near(_label("City Transfer Tax"))); //56-295
+var $_SELECT_POSSESSION_NOTICE = _select("/(.*)2761/", _near(_label("Possession Notice"))); //57-2761
+var $_FINANCE_TERM = _list("select2-choices", _near(_label("Acceptable Financing Terms")));
+var $_ENTER_ASSUME_LOANS = _textbox("Total Assumable Loans");
+var $_ENTER_ASSUME_LOAN_RATE = _numberbox("Assumable Loan Rate in (%)");
+var $_ENTER_CASH_TO_ASSUME = _textbox("Cash to Assume");
+var $_ENTER_MONTHLY_PAYMENT = _textbox("Monthly Payment");
+var $_ENTER_CURRENT_RENT = _textbox("Current Rent");
+
+var $_SUBMIT_NEXT_STEP_2 = _submit("Next Step[2]");
+
+//**************Interior Features
+var $_SELECT_FIREPLACE = _select("/(.*)295729/"); //58-295729
+var $_FIREPLACE_FEATURES = _list("select2-choices", _near(_label("Fireplace")));
+var $_COOLING = _list("select2-choices", _near(_label("Cooling")));
+var $_DINING_ROOM_FEATURES = _list("select2-choices", _near(_label("Dining Room")));
+var $_FAMILY_ROOM_FEATURES = _list("select2-choices", _near(_label("Family Room")));
+var $_HEATING = _list("select2-choices", _near(_label("Heating")));
+
+//non-required fields
+var $_ENTER_NUM_FIREPLACES = _numberbox("Number of Fireplaces");
+var $_ACCESSIBILITY_FEATURES = _list("select2-choices", _near(_label("Accessibility")));
+var $_SELECT_BATH_FEATURES = _list("select2-choices", _near(_label("Bathroom")));
+var $_SELECT_BED_FEATURES = _list("select2-choices", _near(_label("Bedroom")));
+var $_SELECT_COMMUNICATIONS = _list("select2-choices", _near(_label("Communications")));
+var $_SELECT_FLOORING = _list("select2-choices", _near(_label("Flooring")));
+var $_SELECT_INTERIOR_AMENITIES = _list("select2-choices", _near(_label("Interior Amenities")));
+var $_SELECT_KITCHEN = _list("select2-choices", _near(_label("Kitchen")));
+var $_SELECT_LAUNDRY = _list("select2-choices", _near(_label("Laundry")));
+var $_SELECT_OTHER_ROOMS = _list("select2-choices", _near(_label("Other Rooms")));
+var $_SELECT_SECURITY_FEATURES = _list("select2-choices", _near(_label("Security")));
+
+var $_SUBMIT_NEXT_STEP_3 = _submit("Next Step[3]");
+
+//***************Exterior Features*****************
+var $_HORSE_PROP = _select("/(.*)1529/", _near(_label("Is this a Horse Property?"))); //95-1529
+var $_NUM_GARAGE = _numberbox("/(.*)1438/", _near(_label("# Garage Spaces"))); //97-1438
+var $_PARKING_FEATURES = _list("select2-choices", _near(_label("Parking")));
+var $_UTILITIES = _list("select2-choices", _near(_label("Utilities")));
+var $_WATER =  _list("select2-choices", _near(_label("Water")));
+var $_SEWER =  _list("select2-choices", _near(_label("Sewer")));
+var	$_FOUNDATION =  _list("select2-choices", _near(_label("Foundation")));
+var $_ROOF =  _list("select2-choices", _near(_label("Roof")));
+
+//non-required
+var $_POOL_YN = _select("/(.*)2755/", _near(_label("Is there a Pool?"))); //93-2755
+var $_POOL_FEATURES = _list("select2-choices", _near(_label("Pool/Spa")));
+var $_HORSE_PROP_FEATURES = _list("select2-choices", _near(_label("Horse Property")));
+var $_NUM_CARPORT = _numberbox("/(.*)265305/");
+var $_NUM_OPEN_PARKING = _numberbox("# of Open Parking Spaces"); //_numberbox("/(.*)-2/");
+var $_CONSTRUCTION_TYPE = _list("select2-choices", _near(_label("Construction Type")));
+var $_ENERGY_SAVING_FEATURES = _list("select2-choices", _near(_label("Energy Saving")));
+var $_EXTERIOR_AMENITIES = _list("select2-choices", _near(_label("Exterior Amenities")));
+var $_FENCE = _list("select2-choices", _near(_label("Fence")));
+var $_LOT_DESCRIPTION = _list("select2-choices", _near(_label("Lot Description")));
+var $_OTHER_STRUCTURES = _list("select2-choices", _near(_label("Other Structures")));
+var $_OTHER_STRUCTURE_SIZE = _numberbox("Other structure size");
+var $_OTHER_STRUCTURE_DESCRIPTION = _textbox("Other structure description");
+var $_PROPERTY_CONDITION = _list("select2-choices", _near(_label("Property Condition")));
+var $_SOIL_DESCRIPTION = _list("select2-choices", _near(_label("Soil Description")));
+var $_STYLE = _list("select2-choices", _near(_label("Style")));
+var $_VIEW_DESCRIPTON = _list("select2-choices", _near(_label("View Description")));
+
+//****************Community Info********************
+var $_COMMUNITY_YN = _select("/(.*)99999/", _near(_label("Is this property in a Community?"))); //119-99999
+var $_COMMRESTRICTIONS = _list("select2-choices", _near(_label("Community Restrictions")));
+var $_HOA_YN = _select("/(.*)1501/"); //124-1501
+var $_HOA_NAME = _textbox("/(.*)1521/", _near(_label("HOA Name"))); //125-1521
+var $_HOA_FEE = _textbox("/(.*)117/", _near(_label("HOA Fee"))); //127-117
+var $_HOA_FEE_COVERS = _list("select2-choices", _near(_label("HOA Fee Covers")));
+var $_NEW_CONSTRUCTION = _select("/(.*)295802/", _near(_label("Is this a New Construction?"))); //129-295802
+
+//non-required fields
+var $_COMM_NAME = _textbox("Community Name");
+var $_NUMBER_OF_UNITS_IN_COMM = _numberbox("Number of Units in the Community");
+var $_COMM_AMENITIES = _list("select2-choices", _near(_label("Community Amenities")));
+var $_HOA_PHONE = _textbox("HOA Phone Number");
+var $_HOA_FEE_FREQUENCY = _select("/(.*)1510/", _near(_label("HOA Fee Frequency"))); //1697-1510
+var $_HOA_DOCUMENTS = _list("select2-choices", _near(_label("HOA Documents")));
+var $_HOA_TRANSFER_FEE = _textbox("HOA Transfer Fee");
+var $_HOA_DOCUMENT_FEE = _textbox("HOA Document Fee");
+var $_BUILDER_NAME = _textbox("Builder Name");
+var $_TRACT_NAME = _textbox("Tract Name");
+var $_CONSTRUCTION_STATUS = _list("select2-choices", _near(_label("Construction Status")));
+var $_EST_COMPLETION_DATE = _textbox("Estimated Completion Date");
+var $_PRICE_RANGE_LOW = _textbox("Price Range (Low)");
+var $_PRICE_RANGE_HIGH = _textbox("Price Range (High)");
+
+var $_SUBMIT_NEXT_STEP_4 = _submit("Next Step[4]");
+
+//**************Marketing & photos
+var $_SHOW_ON_INTERNET = _select("/(.*)286407/", _near(_label("Do you want this listing on the Internet?"))); //146-286407
+var $_LIST_ADDR_FORMAT = _select("/(.*)142065/", _near(_label("Public Listing Address Format"))); //147-142065
+var $_VOWIDXAVM = _select("/(.*)285104/", _near(_label("VOW-IDX AVM"))); //148-285104
+var $_VOWIDXCOMMENTS = _select("/(.*)285103/", _near(_label("VOW-IDX Comments"))); //149-285103
+
+//non-required fields
+var $_BRANDED_VT_URL = _textbox("Branded Virtual Tour URL");
+var $_UNBRANDED_VT_URL = _textbox("UnBranded Virtual Tour URL");
+var $_PUBLIC_REMARKS = _textarea("/(.*)2828/", _near(_label("Public Remarks"))); //143-2828
+
+var $_SUBMIT_NEXT_STEP_5 = _submit("Next Step[5]");
+
+//***************For Agents
+var $_COMMISSION = _textbox("/(.*)63431/", _near(_label("Commission / Unit"))); //152-63431
+var $_COMMISSION_TYPE = _select("/(.*)282594/", _near(_label("Commission / Unit"))); //205-282594
+var $_LISTING_TYPE = _select("/(.*)2164/", _near(_label("Listing Type"))); //154-2164
+var $_DISCLOSURES_HAZARD = _list("select2-choices", _near(_label("Hazard Disclosures")));
+var $_OCCUPIED_BY = _select("/(.*)2538/", _near(_label("Occupied By"))); //166-2538
+var $_SHOWING_INSTRUCTION = _list("select2-choices", _near(_label("Showing Instructions")));
+
+//non-required fields
+var $_PRIVATE_REMARKS = _textarea("/(.*)33/", _near(_label("Private Remarks"))); //151-33
+var $_LISTING_SERVICE = _select("/(.*)2155/", _near(_label("Listing Service"))); //153-2155
+var $_DUAL_VARIABLE = _select("/(.*)284945/", _near(_label("Dual Variable?"))); //155-284945
+var $_DISCLOSURES_OTHER = _list("select2-choices", _near(_label("Other Disclosures")));
+var $_GREEN_RATED_HOME = _select("/(.*)295963/", _near(_label("Green Rated Home?"))); //160-295963
+var $_TIC_AGREEMENT = _select("/(.*)3590/", _near(_label("TIC Agreement (if any)"))); //161-3590
+var $_URL = _textbox("URL");
+var $_SHOWING_CONTACT = _textbox("Showing Contact");
+var $_SHOWING_CONTACT_TYPE = _select("/(.*)286388/", _near(_label("Showing Contact Type"))); //168-286388
+var $_SHOWING_CONTACT_PHONE = _textbox("Showing Contact Phone");
+var $_ADDITIONAL_SHOWING_INSTRUCTIONS = _textbox("Additional Showing Instructions");
+var $_GATE_CODE = _textbox("Gate Code (if any)");
+
+//**************************************
+
+var $_SUBMIT_NEXT_STEP_6 = _submit("Next Step[6]");
+
+var $_SUBMIT_NEXT_STEP_7 = _submit("Next Step[7]");
+var $_SUBMIT_NEXT_STEP_8 = _submit("Next Step[8]");
+var $_SUBMIT_NEXT_STEP_9 = _submit("Next Step[9]");
+
+//var $_SPAN_CHECK_FOR_ERRORS = _span("Check for Errors");
+var $_SUBMIT_CREATE_LISTING = _submit("Create Listing");
+var $_CONFIRM_SUBMIT_YES = _button("Yes");
+var $_LINK_CLOSE = _link("Close");
+
+var $_SUBMIT_IGNORE = _submit("Ignore");
+var $_SUBMIT_I_UNDERSTAND_THE_RISK_AND_WANT_TO_CONTINUE_MANUALLY = _submit("I understand the risk and want to continue manually.");
+
+var $_SUBMIT_IMPORT_TAX_DATA = _submit("Import Tax Data!"); 
+
+//Delete draft
+var $_LINK_DRAFTS = _link("/Drafts (.*)/");
+var $_SUBMIT_YES = _submit("YES");
+
+//Edit draft
+var $_LINK_CHECK_FOR_ERRORS = _click(_span("Check for Errors")); //_link("Check for Errors", _near(_heading5("/Errors(.*)/")));
+var $_LINK_POSTAL_CODE_IS_REQUIRED = _link("PostalCode field is required", _near(_heading5("Errors")));
+var $_LINK_FOUNDATION_IS_REQUIRED = _link("Foundation field is required", _near(_heading5("Errors")));
+var $_LINK_FULLBATHS_IS_REQUIRED = _link("Number of Full Bathrooms field is required", _near(_heading5("Errors")));
+var $_LINK_SEWER_IS_REQUIRED = _link("SewerSeptic field is required", _near(_heading5("Errors")));
+var $_LINK_ROOF_IS_REQUIRED = _link("Roof field is required", _near(_heading5("Errors")));
+var $_LINK_HORSE_PROP_YN_IS_REQUIRED = _link("Horse Property Yes/No is required field.", _near(_heading5("Errors")));
+var $_LINK_FIREPLACE_YN_IS_REQUIRED = _link("FireplaceYN field is required", _near(_heading5("Errors")));
+var $_LINK_EXPIRE_DATE_IS_REQUIRED = _link("Expiration Date is required", _near(_heading5("Errors")));
+var $_LINK_LIST_DATE_IS_REQUIRED = _link("List Date is required", _near(_heading5("Errors")));
+var $_LINK_SHOWING_INSTRUCTIONS_IS_REQUIRED = _link("ShowingInstructions field is required", _near(_heading5("Errors")));
+var $_LINK_HOA_YN_IS_REQUIRED = _link("HOAExistYN field is required", _near(_heading5("Errors")));
+var $_LINK_LIST_PRICE_IS_REQUIRED = _link("List Price is required", _near(_heading5("Errors")));
+var $_LINK_NEWCONSTRUCTION_YN_IS_REQUIRED = _link("NewConstructionYN field is required", _near(_heading5("Errors")));
+var $_LINK_FAMILY_ROOM_IS_REQUIRED = _link("Family Room field is required", _near(_heading5("Errors")));
+var $_LINK_GARAGE_IS_REQUIRED = _link("Garage Spaces field is required", _near(_heading5("Errors")));
+var $_LINK_DINING_ROOM_IS_REQUIRED = _link("Dining Room field is required", _near(_heading5("Errors")));
+var $_LINK_COOLING_IS_REQUIRED = _link("Cooling field is required", _near(_heading5("Errors")));
+var $_LINK_STREET_NUMBER_IS_REQUIRED = _link("Street Number is a required field", _near(_heading5("Errors")));
+var $_LINK_WATER_IS_REQUIRED = _link("Water field is required", _near(_heading5("Errors")));
+var $_LINK_OCCUPIED_BY_IS_REQUIRED = _link("Occupied By requires a value", _near(_heading5("Errors")));
+var $_LINK_AREA_IS_REQUIRED = _link("Area is required", _near(_heading5("Errors")));
+var $_LINK_ZONING_IS_REQUIRED = _link("Zoning is a required field", _near(_heading5("Errors")));
+var $_LINK_LISTING_AGENT_IS_REQUIRED = _link("Listing Agent ID requires a value.", _near(_heading5("/Errors(.*)/")));
+var $_LINK_CITY_IS_REQUIRED = _link("City is a required field", _near(_heading5("Errors")));
+var $_LINK_HIGH_SCHOOL_DIST_IS_REQUIRED = _link("High School District is required", _near(_heading5("Errors")));
+var $_LINK_YEAR_BUILT_IS_REQUIRED = _link("Year Built field is required", _near(_heading5("Errors")));
+var $_LINK_SPECIAL_LISTING_INFO_IS_REQUIRED = _link("SpecialListingInfo is required", _near(_heading5("Errors")));
+var $_LINK_LOT_IS_REQUIRED = _link("Lot Size field is required", _near(_heading5("Errors")));
+var $_LINK_ELEM_SCHOOL_DIST_IS_REQUIRED = _link("Elementary School District is required", _near(_heading5("Errors")));
+var $_LINK_COUNTY_IS_REQUIRED = _link("County field is required", _near(_heading5("Errors")));
+var $_LINK_BEDROOMS_IS_REQUIRED = _link("Number of Bedrooms field is required", _near(_heading5("Errors")));
+var $_LINK_BUILDING_SQFT_IS_REQUIRED = _link("Approx Sqft is a required field", _near(_heading5("Errors")));
+var $_LINK_HEATING_IS_REQUIRED = _link("Heating field is required", _near(_heading5("Errors")));
+var $_LINK_PARKING_FEATURES_IS_REQUIRED = _link("Parking Features is a required field.", _near(_heading5("Errors")));
+var $_LINK_PARCEL_IS_REQUIRED = _link("Parcel Number is a required field", _near(_heading5("Errors")));
+var $_LINK_LISTING_OFFICE_IS_REQUIRED = _link("Listing Office ID requires a value.", _near(_heading5("/Errors(.*)/")));
+var $_LINK_LISTING_TYPE_IS_REQUIRED = _link("ListingType field is required", _near(_heading5("Errors")));
+var $_LINK_BUILDING_TYPE_IS_REQUIRED = _link("Building Type is required when Subclass is Single Family Home", _near(_heading5("/Errors(.*)/")));
+var $_LINK_CROSS_STREET_FIELD_IS_REQUIRED = _link("Cross Street field is required", _near(_heading5("Errors"))); 
+var $_LINK_STREET_NAME_IS_REQUIRED = _link("Street Name is a required field", _near(_heading5("Errors")));
+var $_LINK_UTILITIES_IS_REQUIRED = _link("Utilities field is required", _near(_heading5("Errors")));
+var $_LINK_DISCLOSURES_IS_REQUIRED = _link("Hazard Disclosures field is required", _near(_heading5("Errors")));
+var $_LINK_COMMISSION_IS_REQUIRED = _link("Commission field is required", _near(_heading5("Errors")));
+var $_LINK_PROPERTY_TYPE_IS_REQUIRED = _link("Subclass requires a value.", _near(_heading5("Errors")));
+var $_LINK_INTERNETLISTINGYN_IS_REQUIRED = _link("InternetListingYN field is required", _near(_heading5("Errors")));
+var $_LINK_LISTING_ADDRESS_FORMAT_IS_REQUIRED = _link("Listing Address Format selection is required", _near(_heading5("Errors")));
+var $_LINK_VOWAVM_IS_REQUIRED = _link("VOW AVM selection is required", _near(_heading5("Errors")));
+var $_LINK_VOWCOMMENTS_IS_REQUIRED = _link("VOW Comments selection is required", _near(_heading5("Errors")));
+
+var $_LINK_VERIFY = _link("Verify[1]");
+
+//+++++++++++++++++ class 3 (mobile home) fields+++++++++++++++++++++
+var $_SPACE_NUMBER = _textbox("Space Number");
+var $_SPACE_RENT = _numberbox("Space Rent");
+
+var $_TEXTBOX_MAKE = _textbox("Make");
+var $_TEXTBOX_MODEL = _textbox("Model");
+var $_MODEL_YEAR = _numberbox("Model Year");
+var $_SEC1_SERIAL_NUMBER = _textbox("Section 1 Serial Number");
+var $_SEC2_SERIAL_NUMBER = _textbox("Section 2 Serial Number");
+var $_SEC3_SERIAL_NUMBER = _textbox("Section 3 Serial Number");
+var $_SEC4_SERIAL_NUMBER = _textbox("Section 4 Serial Number");
+var $_SEC1_SERIAL_LICENSE = _textbox("Section 1 License# (DOH)");
+var $_SEC2_SERIAL_LICENSE = _textbox("Section 2 License# (DOH)");
+var $_SEC3_SERIAL_LICENSE = _textbox("Section 3 License# (DOH)");
+var $_SEC4_SERIAL_LICENSE = _textbox("Section 4 License# (DOH)");
+var $_DECAL_NUMBER = _textbox("HCD Decal Number");
+var $_TAX_TYPE = _select("/(.*)315339/", _near(_label("Tax Type"))); //1673-315339
+var $_PARK_HOME_SITE_DESC = _list("select2-choices", _near(_label("Park Home Site Description")));
+
+var $_PROP_IN_COMPLEX_PARK_YN = _select("/(.*)99999/"); //407-99999
+var $_PARK_COMPLEX_NAME = _textbox("Park/Complex Name");
+var $_PARK_PHONE = _textbox("Park Phone");
+var $_PARK_AMENITIES = _list("select2-choices", _near(_label("Park Amenities")));
+var $_PARK_RESTRICTIONS = _list("select2-choices", _near(_label("Park Restrictions")));
+
+//+++++++++++++class 2 (rin)+++++++++++++++++
+var $_NUM_OF_BUILDING = _numberbox("Number of Buildings");
+var $_NUM_OF_UNITS_LEASED = _numberbox("Number of Units Currently Leased");
+var $_EXISTING_LEASE_TERMS = _list("select2-choices", _near(_label("Existing Lease Terms")));
+
+//Edit a listing (not draft)
+var $_ACTIVE_LISTINGS = _link("/Active (.*)/");
+
+//======================================================
+//Coming soon listings
+
+var $_BUTTON_BTN_BTN_PRIMARY_DROPDOWN_TOGGLE_1 = _button("btn btn-primary dropdown-toggle[1]");
+var $_LINK_NEW_COMING_SOON_1 = _link("New Coming Soon[1]");
+var $_CHECKBOX_COMINGSOONTERMSCHECKBOX = _checkbox("comingsoontermsCheckbox");
+var $_LINK_OK = _link("OK");
+
+var $_PRE_MARKET_PRICE = _textbox("Pre Market Price");
+var $_PRE_MARKET_DATE = _textbox("Pre Market Date");
+var $_LISTING_AGREEMENT_EXPIRE_DATE = _textbox("Listing Agreement Expiration Date");
+
+
+
+
+
+
+

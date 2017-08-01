@@ -1,0 +1,1239 @@
+
+function fnClareityLogin($username, $password){
+	_click($_IMAGESUBMITBUTTON_SIGN_IN);
+	_setValue($_USERNAME, $username);
+	_setValue($_PASSWORD, $password);
+	_call($_PASSWORD.value=$password);
+	_click($_CLAREITY_LOG_IN);
+}
+
+function fnNonClareityLogin($usernamemls, $passwordmls){
+	_click($_IMAGESUBMITBUTTON_SIGN_IN);
+	_setValue($_USERNAME_MLS, $usernamemls);
+	_setValue($_PASSWORD_MLS, $passwordmls);
+	_click($_LOG_IN);
+}
+
+function fnSelectAndEditDraft($edraft) {
+	//_setSelected(_select("action-draftlisting", _near(_cell($draft))), "Edit Draft");
+	_setSelected(_select("action-draftlisting", _near(_cell("/"+$edraft+"(.*)/"))), "Edit Draft");
+}
+
+function fnSelectAndDeleteDraft($ddraft) {
+	//_setSelected(_select("action-draftlisting", _near(_cell($draft))), "Delete Draft");
+	_setSelected(_select("action-draftlisting", _near(_cell("/"+$ddraft+"(.*)/"))), "Delete Draft");
+	_click($_SUBMIT_YES);
+}
+
+function fnSelectPropertyClass($propclass) {
+	_click($_LINK_SELECT_A_CLASS);
+	_click(_link($propclass));
+}
+
+function fnSelectPropertyType($proptype){
+	_click(_link($proptype));
+}
+
+function fnSelectBuildingType($buildingtype) {
+	_setSelected($_BUILDING_TYPE, $buildingtype);
+}
+
+function fnSelectOwnershipType($ownershiptype) {
+	_setSelected($_OWNERSHIP_TYPE, $ownershiptype);
+}
+
+function fnSelectListingOffice($listingoffice) {
+	_setSelected($_LISTING_OFFICE, $listingOffice);
+}
+
+function fnSelectListingAgent($listingagent){
+	_setSelected($_LISTING_AGENT, $listingagent);
+}
+
+//non-required fields
+function fnSelectCoListingOffice($colistingoffice) {
+	_setSelected($_CO_LISTING_OFFICE, $colistingoffice);
+}
+
+function fnSelectCoListingAgent($colistingagent){
+	_setSelected($_CO_LISTING_AGENT, $colistingagent);
+}
+
+//******************Property Overview
+function fnEnterAPN($apn) {
+	_setValue($_TEXTBOX_MAPPARCEL, $apn);
+}
+function fnEnterZip($zip){
+	_setValue($_NUMBERBOX_MAPZIP, $zip);
+}
+function fnEnterCounty($county){
+	_setSelected($_NUMBERBOX_MAPCOUNTY, $county);
+}
+
+function fnEnterStreetNum($streetnum){
+	_setValue($_TEXTBOX_MAPNUMBER, $streetnum);
+}
+function fnEnterStreetName($streetname){
+	_setValue($_TEXTBOX_MAPSTREET, $streetname);
+}
+function fnEnterCity($propcity){
+	_setSelected($_SELECT_MAPCITY, $propcity);
+}
+function fnSelectState($propstate){
+	_setSelected($_SELECT_STATE, $propstate);
+}
+function fnEnterLot($lot){
+	_setValue($_TEXTBOX_MAPLOTSQFT, $lot);
+}
+function fnEnterBeds($beds){
+	_setValue($_NUMBERBOX_MAPBEDROOMS, $beds);
+}
+function fnEnterFullBaths($fullbaths){
+	_setValue($_NUMBERBOX_MAPFULLBATHS, $fullbaths);
+}
+function fnEnterBuildingSqft($buildingsqft){
+	_setValue($_TEXTBOX_MAPBUILDINGSQFT, $buildingsqft);
+}
+function fnEnterYearBuilt($yearbuilt){
+	_setValue($_NUMBERBOX_MAPYEARBUILT, $yearbuilt);
+}
+function fnEnterZoning($zone){
+	_setValue($_TEXTBOX_MAPZONING, $zone);
+}
+function fnEnterArea($area){
+	_setValue($_TEXTBOX_MAPAREA, $area);
+}
+function fnSelectElemSchoolDist($elemSchoolDist){
+	_setSelected($_SELECT_ELEMENTARYSCHOOLDISTRICT, $elemSchoolDist);
+}
+function fnSelectHighSchoolDist($highSchoolDist){
+	_setSelected($_SELECT_HIGHSCHOOLDISTRICT, $highSchoolDist);
+}
+function fnEnterCrossStreet($crossstreet){
+	_setValue($_CROSS_STREET, $crossstreet);
+}
+
+//non-required fields
+function fnEnterOwner($owner){
+	_setValue($_TEXTBOX_OWNER, $owner);
+}
+function fnSelectStreetPrefix($streetprefix){
+	_setSelected($_SELECT_STREET_PREFIX, $streetprefix);
+}
+function fnSelectStreetSuffix($streetsuffix){
+	_setSelected($_SELECT_STREET_SUFFIX, $streetsuffix);
+}
+function fnEnterUnitNum($unitnum){
+	_setValue($_TEXTBOX_UNIT_NUM, $unitnum);
+}
+function fnEnterBuildingNum($buildingnum){
+	if (_exists($_TEXTBOX_BUILDING_NUM)){
+	_setValue($_TEXTBOX_BUILDING_NUM, $buildingnum);
+	}
+}
+function fnEnterModelName($modelname){
+	if (_exists($_TEXTBOX_MODEL_NAME)){
+	_setValue($_TEXTBOX_MODEL_NAME, $modelname);
+	}
+}
+function fnEnterLotAcres($lotacres){
+	if (_exists($_TEXTBOX_LOT_ACRES)){
+	_setValue($_TEXTBOX_LOT_ACRES, $lotacres);
+	}
+}
+function fnEnterStories($stories){
+	_setValue($_TEXTBOX_STORIES, $stories);
+}
+function fnEnterFloors($floors){
+	if (_exists($_TEXTBOX_FLOORS)){
+	_setValue($_TEXTBOX_FLOORS, $floors);
+	}
+}
+function fnEnterUnitFloor($unitfloor){
+	if (_exists($_TEXTBOX_UNIT_FLOOR)){
+	_setValue($_TEXTBOX_UNIT_FLOOR, $unitfloor);
+	}
+}
+function fnEnterTotalUnits($totalunits){
+	if (_exists($_TEXTBOX_TOTAL_UNITS)){
+	_setValue($_TEXTBOX_TOTAL_UNITS, $totalunits);
+	}
+}
+function fnSelectPropertyFaces($propfaces){
+	_setSelected($_SELECT_PROPERTY_FACES, $propfaces);
+}
+function fnSelectUnitFeatures($unitfeatures){
+	if (_exists($_SELECT_UNIT_FEATURES)){
+	_click($_SELECT_UNIT_FEATURES);
+	_click(_div($unitfeatures));
+	_click(_div("select2-drop-mask"));
+	}
+}
+function fnEnterPartialBaths($partialbaths){
+	_setValue($_TEXTBOX_PARTIAL_BATHS, $partialbaths);
+}
+function fnSelectSecondaryLivingDesc($secondarylivingdesc){
+	if (_exists($_SELECT_SECONDARY_LIVING_DESC)){
+	_click($_SELECT_SECONDARY_LIVING_DESC);
+	_click(_div($secondarylivingdesc));
+	_click(_div("select2-drop-mask"));
+	}
+}
+function fnEnterSecondaryLivingSqft($secondarylivingsqft){
+	if (_exists($_SELECT_SECONDARY_LIVING_SQFT)){
+	_setValue($_SELECT_SECONDARY_LIVING_SQFT, $secondarylivingsqft);
+	}
+}
+
+function fnEnterLandUse($landuse){
+	_setValue($_TEXTBOX_LAND_USE, $landuse);
+}
+function fnSelectElemSchool($elemschool){
+	_setSelected($_SELECT_ELEM_SCHOOL, $elemschool);
+}
+function fnSelectMiddleSchool($middleschool){
+	_setSelected($_SELECT_MIDDLE_SCHOOL, $middleschool);
+}
+function fnSelectHighSchool($highschool){
+	_setSelected($_SELECT_HIGH_SCHOOL, $highschool);
+}
+function fnSelectPropCityLimits($propcitylimits){
+	_setSelected($_SELECT_PROP_CITY_LIMITS, $propcitylimits);
+}
+function fnSelectPropIncorporatedArea($propincorporatedarea){
+	_setSelected($_SELECT_PROP_INCORPORATED_AREA, $propincorporatedarea);
+}
+function fnEnterDirections($directions){
+	_setValue($_TEXTBOX_DIRECTIONS, $directions);
+}
+
+//***************Listing Details********************
+function fnSelectStatus($liststatus){
+	_setSelected($_LISTING_STATUS, $liststatus);
+}
+function fnEnterListDate($listdate){
+	_setValue($_TEXTBOX_LIST_DATE, $listdate);
+	_click($_CLOSE_CALENDAR);
+}
+function fnEnterListPrice($listprice){
+	_setValue($_TEXTBOX_LIST_PRICE, $listprice);
+}
+function fnEnterExpireDate($expiredate){
+	_setValue($_TEXTBOX_EXPIRE_DATE, $expiredate);
+	_click($_CLOSE_CALENDAR);
+}
+function fnSelectSpecialListingCondition($speciallistcon){
+	_setSelected($_SELECT_SPECIAL_LISTING_CONDITION, $speciallistcon);
+}
+
+//non-required fields
+function fnSelectPointOfSaleOrdinance($pointofsaleordinance){
+	_setSelected($_SELECT_POINT_OF_SALE_ORDINANCE, $pointofsaleordinance);
+}
+function fnSelectCityTransferTax($citytransfertax){
+	_setSelected($_SELECT_CITY_TRANSFER_TAX, $citytransfertax);
+}
+function fnSelectPossessionNotice($posnotice){
+	_setSelected($_SELECT_POSSESSION_NOTICE, $posnotice);
+}
+function fnSelectFinanceTerm($financeterm){
+	_click($_FINANCE_TERM);
+	_click(_div($financeterm));
+	_click(_div("select2-drop-mask"));
+}
+function fnEnterAssumeLoans($assumeloans){
+	_setValue($_ENTER_ASSUME_LOANS, $assumeloans);
+}
+function fnEnterAssumeLoanRate($assumeloanrate){
+	_setValue($_ENTER_ASSUME_LOAN_RATE, $assumeloanrate);
+}
+function fnEnterCashToAssume($cashtoassume){
+	_setValue($_ENTER_CASH_TO_ASSUME, $cashtoassume);
+}
+function fnEnterMonthlyPayment($monthlypayment){
+	_setValue($_ENTER_MONTHLY_PAYMENT, $monthlypayment);
+}
+function fnEnterCurrentRent($currentrent){
+	_setValue($_ENTER_CURRENT_RENT, $currentrent);
+}
+
+//*************Interior Features********************
+function fnSelectFireplace($fireplace){
+	_setSelected($_SELECT_FIREPLACE, $fireplace);
+}
+function fnSelectFireplaceFeatures($fireplacefeature) {
+	_click($_FIREPLACE_FEATURES);
+	_click(_div($fireplacefeature));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectCooling($cooling){
+	_click($_COOLING);
+	_click(_div($cooling));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectDiningRoomFeatures($diningroomfeatures){
+	_click($_DINING_ROOM_FEATURES);
+	_click(_div($diningroomfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectFamilyRoomFeatures($familyroomfeatures){
+	_click($_FAMILY_ROOM_FEATURES);
+	_click(_div($familyroomfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectHeating($heating){
+	_click($_HEATING);
+	_click(_div($heating));
+	_click(_div("select2-drop-mask"));
+}
+
+//non-required fields
+function fnEnterNumFireplaces($numfireplaces){
+	_setValue($_ENTER_NUM_FIREPLACES, $numfireplaces);
+}
+function fnSelectAccessibilityFeatures($accessfeatures){
+	_click($_ACCESSIBILITY_FEATURES);
+	_click(_div($accessfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectBathFeatures($bathroomfeatures){
+	_click($_SELECT_BATH_FEATURES);
+	_click(_div($bathroomfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectBedFeatures($bedroomfeatures){
+	_click($_SELECT_BED_FEATURES);
+	_click(_div($bedroomfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectCommunications($communications){
+	_click($_SELECT_COMMUNICATIONS);
+	_click(_div($communications));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectFlooring($flooring){
+	_click($_SELECT_FLOORING);
+	_click(_div($flooring));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectInteriorAmenities($interioramenities){
+	_click($_SELECT_INTERIOR_AMENITIES);
+	_click(_div($interioramenities));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectKitchen($kitchen){
+	_click($_SELECT_KITCHEN);
+	_click(_div($kitchen));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectLaundry($laundry){
+	_click($_SELECT_LAUNDRY);
+	_click(_div($laundry));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectOtherRooms($otherrooms){
+	_click($_SELECT_OTHER_ROOMS);
+	_click(_div($otherrooms));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectSecurityFeatures($securityfeatures){
+	_click($_SELECT_SECURITY_FEATURES);
+	_click(_div($securityfeatures));
+	_click(_div("select2-drop-mask"));
+}
+
+//******************Exterior Features*******************
+function fnSelectHorseProp($horseprop){
+	_setSelected($_HORSE_PROP, $horseprop);
+}
+function fnEnterGarage($garage){
+	_setValue($_NUM_GARAGE, $garage);
+}
+function fnSelectParkingFeatures($parkingfeatures){
+	_click($_PARKING_FEATURES);
+	_click(_div($parkingfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectUtilities($utilities){
+	_click($_UTILITIES);
+	_click(_div($utilities));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectWater($water){
+	_click($_WATER);
+	_click(_div($water));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectSewer($sewer){
+	_click($_SEWER);
+	_click(_div($sewer));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectFoundation($foundation){
+	_click($_FOUNDATION);
+	_click(_div($foundation));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectRoof($roof){
+	_click($_ROOF);
+	_click(_div($roof));
+	_click(_div("select2-drop-mask"));
+}
+
+//non-required fields
+function fnSelectPoolYN($poolYN) {
+	_setSelected($_POOL_YN, $poolYN);
+}
+function fnSelectPoolFeatures($poolfeatures){
+	_click($_POOL_FEATURES);
+	_click(_div($poolfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnHorsePropFeatures($horsepropfeatures){
+	_click($_HORSE_PROP_FEATURES);
+	_click(_div($horsepropfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnEnterCarport($carport){
+	_setValue($_NUM_CARPORT, $carport); 
+}
+function fnEnterOpenParking($openparking){
+	_setValue($_NUM_OPEN_PARKING, $openparking);
+}
+function fnSelectConstructionType($constructiontype){
+	_click($_CONSTRUCTION_TYPE);
+	_click(_div($constructiontype));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectEnergySavingFeatures($energysavingfeatures){
+	_click($_ENERGY_SAVING_FEATURES);
+	_click(_div($energysavingfeatures));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectExteriorAmenities($exterioramenities){
+	_click($_EXTERIOR_AMENITIES);
+	_click(_div($exterioramenities));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectFence($fence){
+	_click($_FENCE);
+	_click(_div($fence));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectLotDescription($lotdescription){
+	_click($_LOT_DESCRIPTION);
+	_click(_div($lotdescription));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectOtherStructures($otherstructures){
+	_click($_OTHER_STRUCTURES);
+	_click(_div($otherstructures));
+	_click(_div("select2-drop-mask"));
+}
+function fnEnterOtherStructureSize($otherstructuresize){
+	_setValue($_OTHER_STRUCTURE_SIZE,$otherstructuresize);
+}
+function fnEnterOtherStructureDescription($otherstructuredescription){
+	_setValue($_OTHER_STRUCTURE_DESCRIPTION,$otherstructuredescription);
+}
+function fnSelectPropertyCondition($propcondition){
+	_click($_PROPERTY_CONDITION);
+	_click(_div($propcondition));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectSoilDescription($soildescription){
+	_click($_SOIL_DESCRIPTION);
+	_click(_div($soildescription));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectStyle($style){
+	_click($_STYLE);
+	_click(_div($style));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectViewDescription($viewdescription){
+	_click($_VIEW_DESCRIPTON);
+	_click(_div($viewdescription));
+	_click(_div("select2-drop-mask"));
+}
+
+
+//*********Community Info*************
+
+function fnCommunityYN($commyn){
+	_setValue($_COMMUNITY_YN, $commyn);
+}
+function fnSelectCommRestrictions($commrestrictions) {
+	_click($_COMMRESTRICTIONS);
+	_click(_div($commrestrictions));
+	_click(_div("select2-drop-mask"));
+}
+function fnEnterCommName($commname){
+	_setValue($_COMM_NAME, $commname);
+}
+function fnEnterNumberOfUnitsInComm($numofunitsincomm){
+	_setValue($_NUMBER_OF_UNITS_IN_COMM, $numofunitsincomm);
+}
+function fnSelectCommAmenities($commamenities){
+	_click($_COMM_AMENITIES);
+	_click(_div($commamenities));
+	_click(_div("select2-drop-mask"));
+}
+
+function fnHOAYN($hoayn){
+	_setSelected($_HOA_YN, $hoayn);
+}
+function fnEnterHOAName($hoaname) {
+	_setValue($_HOA_NAME, $hoaname);
+}
+function fnEnterHOAFee($hoafee){
+	_setValue($_HOA_FEE, $hoafee);
+}
+function fnSelectHOAFeeCovers($hoafeecovers){
+	_click($_HOA_FEE_COVERS);
+	_click(_div($hoafeecovers));
+	_click(_div("select2-drop-mask"));
+}
+
+function fnNewConstruction($newconstruction){
+	_setSelected($_NEW_CONSTRUCTION, $newconstruction);
+}
+
+//non-required fields
+function fnEnterHOAPhone($hoaphone){
+	_setValue($_HOA_PHONE, $hoaphone);
+}
+function fnSelectHOAFeeFrequency($hoafeefrequency){
+	_setSelected($_HOA_FEE_FREQUENCY, $hoafeefrequency);
+}
+function fnSelectHOADocuments($hoadocuments){
+	_click($_HOA_DOCUMENTS);
+	_click(_div($hoadocuments));
+	_click(_div("select2-drop-mask"));
+}
+function fnEnterHOATransferFee($hoatransferfee){
+	_setValue($_HOA_TRANSFER_FEE, $hoatransferfee);
+}
+function fnEnterHOADocFee($hoadocfee){
+	_setValue($_HOA_DOCUMENT_FEE, $hoadocfee);
+}
+function fnEnterBuilderName($buildername){
+	_setValue($_BUILDER_NAME, $buildername);
+}
+function fnEnterTractName($tractname){
+	_setValue($_TRACT_NAME, $tractname);
+}
+function fnSelectConstructionStatus($constructionstatus){
+	_click($_CONSTRUCTION_STATUS);
+	_click(_div($constructionstatus));
+	_click(_div("select2-drop-mask"));
+}
+function fnEnterEstCompletionDate($estcompletiondate){
+	_setValue($_EST_COMPLETION_DATE, $estcompletiondate);
+	_click($_CLOSE_CALENDAR);
+}
+function fnEnterPriceRangeLow($pricerangelow){
+ 	_setValue($_PRICE_RANGE_LOW, $pricerangelow);
+}
+function fnEnterPriceRangeHigh($pricerangehigh){
+	_setValue($_PRICE_RANGE_HIGH, $pricerangehigh);
+}
+
+
+//*********Marketing and Photos************
+
+function fnSelectShowOnInternet($showoninternet) {
+	_setSelected($_SHOW_ON_INTERNET, $showoninternet);
+}
+
+function fnSelectListAddrFormat($listaddrformat){
+	_setSelected($_LIST_ADDR_FORMAT, $listaddrformat);
+}
+function fnSelectVOWIDXAVM($vowidxavm){
+	_setSelected($_VOWIDXAVM, $vowidxavm);
+}
+function fnSelectVOWIDXCOMMENTS($vowidxcomments){
+	_setSelected($_VOWIDXCOMMENTS, $vowidxcomments);
+}
+
+//non-required fields
+function fnEnterBrandedVTURL($brandedvturl){
+	_setValue($_BRANDED_VT_URL,$brandedvturl);
+}
+function fnEnterUnbrandedVTURL($unbrandedvturl){
+	_setValue($_UNBRANDED_VT_URL,$unbrandedvturl);
+}
+function fnEnterPublicRemarks($publicremarks){
+	_setValue($_PUBLIC_REMARKS,$publicremarks);
+}
+
+
+//***************For Agents****************
+function fnEnterCommission($commission){
+	_setValue($_COMMISSION, $commission);
+}
+function fnSelectCommType($commtype){
+	_setSelected($_COMMISSION_TYPE, $commtype);
+}
+function fnSelectListingType($listingtype){
+	_setSelected($_LISTING_TYPE, $listingtype);
+}
+function fnSelectDisclosuresHazard($disclosureshazard){
+	_click($_DISCLOSURES_HAZARD);
+	_click(_div($disclosureshazard));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectOccupiedBy($occupiedby){
+	_setSelected($_OCCUPIED_BY, $occupiedby);
+}
+function fnSelectShowingInstruction($showinginstruction){
+	_click($_SHOWING_INSTRUCTION);
+	_click(_div($showinginstruction));
+	_click(_div("select2-drop-mask"));
+}
+
+//non-required fields
+function fnEnterPrivateRemarks($privateremarks){
+	_setValue($_PRIVATE_REMARKS,$privateremarks);
+}
+function fnSelectListingService($listingservice){
+	_setSelected($_LISTING_SERVICE,$listingservice);
+}
+function fnSelectDualVariable($dualvariable){
+	_setSelected($_DUAL_VARIABLE,$dualvariable);
+}
+function fnSelectDisclosuresOther($disclosuresother){
+	_click($_DISCLOSURES_OTHER);
+	_click(_div($disclosuresother));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectGreenRatedHome($greenratedhome){
+	_setSelected($_GREEN_RATED_HOME,$greenratedhome);
+}
+function fnSelectTICAgreement($ticagreement){
+	_setSelected($_TIC_AGREEMENT,$ticagreement);
+}
+function fnEnterURL($url){
+	_setValue($_URL,$url);
+}
+function fnEnterShowingContact($showingcontact){
+	_setValue($_SHOWING_CONTACT,$showingcontact);
+}
+function fnSelectShowingContactType($showingcontacttype){
+	_setSelected($_SHOWING_CONTACT_TYPE,$showingcontacttype);
+}
+function fnEnterShowingContactPhone($showingcontactphone){
+	_setValue($_SHOWING_CONTACT_PHONE,$showingcontactphone);
+}
+function fnEnterAdditionalShowingInstructions($addlshowinginstructions){
+	_setValue($_ADDITIONAL_SHOWING_INSTRUCTIONS,$addlshowinginstructions);
+}
+function fnEnterGateCode($gatecode){
+	_setValue($_GATE_CODE,$gatecode);
+}
+
+//**********************************
+
+function fnCheckForErrors(){
+	_click($_LINK_CHECK_FOR_ERRORS);
+}
+
+function VerifyDraft(){
+	_click($_LINK_VERIFY);
+}
+
+//Class 3 (mobile home) 
+function fnEnterSpaceNumber($spacenumber){
+	_setValue($_SPACE_NUMBER, $spacenumber);
+}
+function fnEnterSpaceRent($spacerent){
+	_setValue($_SPACE_RENT, $spacerent);
+}
+function fnEnterMake($make){
+	_setValue($_TEXTBOX_MAKE, $make);
+}
+function fnEnterModel($model){
+	_setValue($_TEXTBOX_MODEL, $model);
+}
+function fnEnterModelYear($modelyear){
+	_setValue($_MODEL_YEAR, $modelyear);
+}
+function fnEnterSec1SerialNumber($sec1serialnumber){
+	_setValue($_SEC1_SERIAL_NUMBER, $sec1serialnumber);
+}
+function fnEnterSec2SerialNumber($sec2serialnumber){
+	_setValue($_SEC2_SERIAL_NUMBER, $sec2serialnumber);
+}
+function fnEnterSec3SerialNumber($sec3serialnumber){
+	_setValue($_SEC3_SERIAL_NUMBER, $sec3serialnumber);
+}
+function fnEnterSec4SerialNumber($sec4serialnumber){
+	_setValue($_SEC4_SERIAL_NUMBER, $sec4serialnumber);
+}
+function fnEnterSec1SerialLicense($sec1seriallicense){
+	_setValue($_SEC1_SERIAL_LICENSE, $sec1seriallicense);
+}
+function fnEnterSec2SerialLicense($sec2seriallicense){
+	_setValue($_SEC2_SERIAL_LICENSE, $sec2seriallicense);
+}
+function fnEnterSec3SerialLicense($sec3seriallicense){
+	_setValue($_SEC3_SERIAL_LICENSE, $sec3seriallicense);
+}
+function fnEnterSec4SerialLicense($sec4seriallicense){
+	_setValue($_SEC4_SERIAL_LICENSE, $sec4seriallicense);
+}
+function fnEnterDecalNumber($decalnumber){
+	_setValue($_DECAL_NUMBER, $decalnumber);
+}
+function fnSelectTaxType($taxtype){
+	_setSelected($_TAX_TYPE, $taxtype);
+}
+function fnParkHomeSiteDesc($parkhomesitedesc){
+	_click($_PARK_HOME_SITE_DESC);
+	_click(_div($parkhomesitedesc));
+	_click(_div("select2-drop-mask"));
+}
+function fnComplexParkYN($complexparkyn){
+	_setSelected($_PROP_IN_COMPLEX_PARK_YN, $complexparkyn);
+}
+function fnParkComplexName($parkcomplexname){
+	_setValue($_PARK_COMPLEX_NAME, $parkcomplexname);
+}
+function fnEnterParkPhone($parkphone){
+	_setValue($_PARK_PHONE, $parkphone);
+}
+function fnSelectParkAmenities($parkamenities){
+	_click($_PARK_AMENITIES);
+	_click(_div($parkamenities));
+	_click(_div("select2-drop-mask"));
+}
+function fnSelectParkRestrictions($parkrestrictions){
+	_click($_PARK_RESTRICTIONS);
+	_click(_div($parkrestrictions));
+	_click(_div("select2-drop-mask"));
+}
+
+
+//Edit listing (not a draft)
+function fnSelectAndEditListing($listing) {
+	if (_exists($listing)){
+	_setSelected(_select("action-draftlisting", _near(_cell($listing))), "Edit Listing");
+	}
+}
+
+//Coming soon listing
+function fnEnterPreMarketPrice($premarketprice){
+	_setValue($_PRE_MARKET_PRICE, $premarketprice) ;
+}
+function fnEnterPreMarketDate($premarketdate){
+	_setValue($_PRE_MARKET_DATE, $premarketdate);
+	_click($_CLOSE_CALENDAR);
+}
+function fnEnterListAgreeExpireDate($listingagreementexpiredate){
+	_setValue($_LISTING_AGREEMENT_EXPIRE_DATE, $listingagreementexpiredate);
+	_click($_CLOSE_CALENDAR);
+}
+
+//++++++++++++++++++++++++++++++Auto Select Attribute Values+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//++++++++++++++++++++++++++++++Auto Select Attribute Values+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//============================coming soon====================
+function fnAutoEnterPreMarketDate(){
+	var $now = new Date();
+	var $premktdate = $now.getDate();
+	_setValue($_PRE_MARKET_DATE, $premktdate);
+	_click($_CLOSE_CALENDAR);
+}
+function fnAutoEnterListAgreeExpireDate($listexpiredate){
+	_setValue($_LISTING_AGREEMENT_EXPIRE_DATE, $listexpiredate);
+	_click($_CLOSE_CALENDAR);
+}
+
+//===============================new listing====================
+
+function fnAutoSelectBuildingType($buildingtypeoption) {
+	_setSelected($_BUILDING_TYPE, $buildingtypeoption);
+}
+
+function fnAutoSelectOwnershipType($ownershiptype) {
+	_setSelected($_OWNERSHIP_TYPE, $ownershiptype);
+}
+
+function fnAutoSelectListingOffice($listingoffice) {
+	_setSelected($_LISTING_OFFICE, $listingoffice);
+}
+
+function fnAutoSelectListingAgent($listingagent){
+	_setSelected($_LISTING_AGENT, $listingagent);
+}
+
+//non-required fields
+function fnAutoSelectCoListingOffice($colistingoffice) {
+	_setSelected($_CO_LISTING_OFFICE, $colistingoffice);
+}
+
+function fnAutoSelectCoListingAgent($colistingagent){
+	_setSelected($_CO_LISTING_AGENT, $colistingagent);
+}
+
+//******************Property Overview
+
+function fnAutoEnterCounty($county){
+	_setSelected($_NUMBERBOX_MAPCOUNTY, $county);
+}
+
+function fnAutoSelectElemSchoolDist($elemschooldist){
+	_setSelected($_SELECT_ELEMENTARYSCHOOLDISTRICT, $elemschooldist);
+}
+function fnAutoSelectHighSchoolDist($highschooldist){
+	_setSelected($_SELECT_HIGHSCHOOLDISTRICT, $highschooldist);
+}
+
+//non-required fields
+function fnAutoSelectPropertyFaces($propfaces){
+	_setSelected($_SELECT_PROPERTY_FACES, $propfaces);
+}
+function fnAutoSelectUnitFeatures($unitfeatures1, $unitfeatures2){
+	if (_exists($_SELECT_UNIT_FEATURES)){
+	_click($_SELECT_UNIT_FEATURES);
+	_click(_div("select2-result-label["+$unitfeatures1+"]"));
+	_click(_div("select2-result-label["+$unitfeatures2+"]"));
+	_click(_div("select2-drop-mask"));
+	}
+}
+function fnAutoSelectSecondaryLivingDesc($secondarylivingdesc1){
+	if (_exists($_SELECT_SECONDARY_LIVING_DESC)){
+	_click($_SELECT_SECONDARY_LIVING_DESC);
+	_click(_div("select2-result-label["+$secondarylivingdesc1+"]"));
+	_click(_div("select2-drop-mask"));
+	}
+}
+
+function fnAutoSelectElemSchool($elemschool){
+	_setSelected($_SELECT_ELEM_SCHOOL, $elemschool);
+}
+function fnAutoSelectMiddleSchool($middleschool){
+	_setSelected($_SELECT_MIDDLE_SCHOOL, $middleschool);
+}
+function fnAutoSelectHighSchool($highschool){
+	_setSelected($_SELECT_HIGH_SCHOOL, $highschool);
+}
+function fnAutoSelectPropCityLimits($propcitylimits){
+	_setSelected($_SELECT_PROP_CITY_LIMITS, $propcitylimits);
+}
+function fnAutoSelectPropIncorporatedArea($propincorporatedarea){
+	_setSelected($_SELECT_PROP_INCORPORATED_AREA, $propincorporatedarea);
+}
+
+//***************Listing Details********************
+function fnAutoSelectStatus($liststatus){
+	_setSelected($_LISTING_STATUS, $liststatus);
+}
+function fnAutoEnterListDate(){
+	var $now = new Date();
+	var $ldate = $now.getDate();
+	_setValue($_TEXTBOX_LIST_DATE, $ldate);
+	_click($_CLOSE_CALENDAR);
+}
+function fnAutoEnterExpireDate($expiredate){
+	_setValue($_TEXTBOX_EXPIRE_DATE, $expiredate);
+	_click($_CLOSE_CALENDAR);
+}
+
+function fnAutoSelectSpecialListingCondition($speciallistingcondition){
+	_setSelected($_SELECT_SPECIAL_LISTING_CONDITION, $speciallistingcondition);
+}
+
+//non-required fields
+function fnAutoSelectPointOfSaleOrdinance($pointofsaleordinance){
+	_setSelected($_SELECT_POINT_OF_SALE_ORDINANCE, $pointofsaleordinance);
+}
+function fnAutoSelectCityTransferTax($citytransfertax){
+	_setSelected($_SELECT_CITY_TRANSFER_TAX, $citytransfertax);
+}
+function fnAutoSelectPossessionNotice($possessionnotice){
+	_setSelected($_SELECT_POSSESSION_NOTICE, $possessionnotice);
+}
+
+function fnAutoSelectFinanceTerm($financeterm1, $financeterm2){
+	_click($_FINANCE_TERM);
+	_click(_div("select2-result-label["+$financeterm1+"]"));
+	_click(_div("select2-result-label["+$financeterm2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+
+//*************Interior Features********************
+function fnAutoSelectFireplace($fireplace){
+	_setSelected($_SELECT_FIREPLACE, $fireplace);
+}
+function fnAutoSelectFireplaceFeatures($fireplacefeatures1, $fireplacefeatures2) {
+	_click($_FIREPLACE_FEATURES);
+	_click(_div("select2-result-label["+$fireplacefeatures1+"]"));
+	_click(_div("select2-result-label["+$fireplacefeatures2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectCooling($cooling1, $cooling2){
+	_click($_COOLING);
+	_click(_div("select2-result-label["+$cooling1+"]"));
+	_click(_div("select2-result-label["+$cooling2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+function fnAutoSelectDiningRoomFeatures($diningfeatures1, $diningfeatures2){
+	_click($_DINING_ROOM_FEATURES);
+	_click(_div("select2-result-label["+$diningfeatures1+"]"));
+	_click(_div("select2-result-label["+$diningfeatures2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectFamilyRoomFeatures($familyroomfeatures1){
+	_click($_FAMILY_ROOM_FEATURES);
+	_click(_div("select2-result-label["+$familyroomfeatures1+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectHeating($heating1,$heating2,$heating3){
+	_click($_HEATING);
+	_click(_div("select2-result-label["+$heating1+"]"));
+	_click(_div("select2-result-label["+$heating2+"]"));
+	_click(_div("select2-result-label["+$heating3+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+//non-required fields
+function fnAutoSelectAccessibilityFeatures($assessibility1, $assessibility2){
+	_click($_ACCESSIBILITY_FEATURES);
+	_click(_div("select2-result-label["+$assessibility1+"]"));
+	_click(_div("select2-result-label["+$assessibility2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectBathFeatures($bathfeatures1, $bathfeatures2){
+	_click($_SELECT_BATH_FEATURES);
+	_click(_div("select2-result-label["+$bathfeatures1+"]"));
+	_click(_div("select2-result-label["+$bathfeatures2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectBedFeatures($bedfeatures1, $bedfeatures2){
+	_click($_SELECT_BED_FEATURES);
+	_click(_div("select2-result-label["+$bedfeatures1+"]"));
+	_click(_div("select2-result-label["+$bedfeatures2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectCommunications($communication1, $communication2){
+	_click($_SELECT_COMMUNICATIONS);
+	_click(_div("select2-result-label["+$communication1+"]"));
+	_click(_div("select2-result-label["+$communication2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectFlooring($flooring1, $flooring2){
+	_click($_SELECT_FLOORING);
+	_click(_div("select2-result-label["+$flooring1+"]"));
+	_click(_div("select2-result-label["+$flooring2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectInteriorAmenities($interioramenities1, $interioramenities2){
+	_click($_SELECT_INTERIOR_AMENITIES);
+	_click(_div("select2-result-label["+$interioramenities1+"]"));
+	_click(_div("select2-result-label["+$interioramenities2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectKitchen($kitchen1, $kitchen2){
+	_click($_SELECT_KITCHEN);
+	_click(_div("select2-result-label["+$kitchen1+"]"));
+	_click(_div("select2-result-label["+$kitchen2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectLaundry($laundry1, $laundry2){
+	_click($_SELECT_LAUNDRY);
+	_click(_div("select2-result-label["+$laundry1+"]"));
+	_click(_div("select2-result-label["+$laundry2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectOtherRooms($otherroom1, $otherroom2){
+	_click($_SELECT_OTHER_ROOMS);
+	_click(_div("select2-result-label["+$otherroom1+"]"));
+	_click(_div("select2-result-label["+$otherroom2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectSecurityFeatures($securityfeature1, $securityfeature2){
+	_click($_SELECT_SECURITY_FEATURES);
+	_click(_div("select2-result-label["+$securityfeature1+"]"));
+	_click(_div("select2-result-label["+$securityfeature2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+//******************Exterior Features*******************
+function fnAutoSelectHorseProp($horseprop){
+	_setSelected($_HORSE_PROP, $horseprop);
+}
+
+function fnAutoSelectParkingFeatures($parkingfeatures1,$parkingfeatures2){
+	_click($_PARKING_FEATURES);
+	_click(_div("select2-result-label["+$parkingfeatures1+"]"));
+	_click(_div("select2-result-label["+$parkingfeatures2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectUtilities($utilities1, $utilities2){
+	_click($_UTILITIES);
+	_click(_div("select2-result-label["+$utilities1+"]"));
+	_click(_div("select2-result-label["+$utilities2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectWater($water1, $water2){
+	_click($_WATER);
+	_click(_div("select2-result-label["+$water1+"]"));
+	_click(_div("select2-result-label["+$water2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectSewer($sewer1, $sewer2){
+	_click($_SEWER);
+	_click(_div("select2-result-label["+$sewer1+"]"));
+	_click(_div("select2-result-label["+$sewer2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectFoundation($foundation1, $foundation2){
+	_click($_FOUNDATION);
+	_click(_div("select2-result-label["+$foundation1+"]"));
+	_click(_div("select2-result-label["+$foundation2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectRoof($roof1, $roof2){
+	_click($_ROOF);
+	_click(_div("select2-result-label["+$roof1+"]"));
+	_click(_div("select2-result-label["+$roof2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+//non-required fields
+function fnAutoSelectPoolYN($poolyn) {
+	_setSelected($_POOL_YN, $poolyn);
+}
+function fnAutoSelectPoolFeatures($poolfeatures1, $poolfeatures2, $poolfeatures3){
+	_click($_POOL_FEATURES);
+	_click(_div("select2-result-label["+$poolfeatures1+"]"));
+	_click(_div("select2-result-label["+$poolfeatures2+"]"));
+	_click(_div("select2-result-label["+$poolfeatures3+"]"));	
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectHorsePropFeatures($horsepropfeatures1, $horsepropfeatures2){
+	_click($_HORSE_PROP_FEATURES);
+	_click(_div("select2-result-label["+$horsepropfeatures1+"]"));
+	_click(_div("select2-result-label["+$horsepropfeatures2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectConstructionType($constructiontype1, $constructiontype2){
+	_click($_CONSTRUCTION_TYPE);
+	_click(_div("select2-result-label["+$constructiontype1+"]"));
+	_click(_div("select2-result-label["+$constructiontype2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectEnergySavingFeatures($energysaving1, $energysaving2){
+	_click($_ENERGY_SAVING_FEATURES);
+	_click(_div("select2-result-label["+$energysaving1+"]"));
+	_click(_div("select2-result-label["+$energysaving2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectExteriorAmenities($exterioramenities1, $exterioramenities2){
+	_click($_EXTERIOR_AMENITIES);
+	_click(_div("select2-result-label["+$exterioramenities1+"]"));
+	_click(_div("select2-result-label["+$exterioramenities2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectFence($fence1, $fence2){
+	_click($_FENCE);
+	_click(_div("select2-result-label["+$fence1+"]"));
+	_click(_div("select2-result-label["+$fence2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectLotDescription($lotdesc1, $lotdesc2){
+	_click($_LOT_DESCRIPTION);
+	_click(_div("select2-result-label["+$lotdesc1+"]"));
+	_click(_div("select2-result-label["+$lotdesc2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectOtherStructures($otherstructures1, $otherstructures2){
+	_click($_OTHER_STRUCTURES);
+	_click(_div("select2-result-label["+$otherstructures1+"]"));
+	_click(_div("select2-result-label["+$otherstructures2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+function fnAutoSelectPropertyCondition($propcondition1, $propcondition2){
+	_click($_PROPERTY_CONDITION);
+	_click(_div("select2-result-label["+$propcondition1+"]"));
+	_click(_div("select2-result-label["+$propcondition2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectSoilDescription($soil1, $soil2){
+	_click($_SOIL_DESCRIPTION);
+	_click(_div("select2-result-label["+$soil1+"]"));
+	_click(_div("select2-result-label["+$soil2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectStyle($style1, $style2){
+	_click($_STYLE);
+	_click(_div("select2-result-label["+$style1+"]"));
+	_click(_div("select2-result-label["+$style2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectViewDescription($view1, $view2){
+	_click($_VIEW_DESCRIPTON);
+	_click(_div("select2-result-label["+$view1+"]"));
+	_click(_div("select2-result-label["+$view2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+//*********Community Info*************
+
+function fnAutoCommunityYN($communityyn){
+	_setSelected($_COMMUNITY_YN, $communityyn);
+}
+function fnAutoSelectCommRestrictions($commrestrictions1, $commrestrictions2) {
+	_click($_COMMRESTRICTIONS);
+	_click(_div("select2-result-label["+$commrestrictions1+"]"));
+	_click(_div("select2-result-label["+$commrestrictions2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectCommAmenities($commamenities1, $commamenities2){
+	_click($_COMM_AMENITIES);
+	_click(_div("select2-result-label["+$commamenities1+"]"));
+	_click(_div("select2-result-label["+$commamenities2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+function fnAutoHOAYN($hoayn){
+	_setSelected($_HOA_YN, $hoayn);
+}
+function fnAutoSelectHOAFeeCovers($hoafeecovers1, $hoafeecovers2){
+	_click($_HOA_FEE_COVERS);
+	_click(_div("select2-result-label["+$hoafeecovers1+"]"));
+	_click(_div("select2-result-label["+$hoafeecovers2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+function fnAutoNewConstruction($newconstruction){
+	_setSelected($_NEW_CONSTRUCTION, $newconstruction);
+}
+
+//non-required fields
+function fnAutoSelectHOAFeeFrequency($hoafeefrequency){
+	_setSelected($_HOA_FEE_FREQUENCY, $hoafeefrequency);
+}
+function fnAutoSelectHOADocuments($hoadoc1, $hoadoc2){
+	_click($_HOA_DOCUMENTS);
+	_click(_div("select2-result-label["+$hoadoc1+"]"));
+	_click(_div("select2-result-label["+$hoadoc2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectConstructionStatus($constructionstatus){
+	_click($_CONSTRUCTION_STATUS);
+	_click(_div("select2-result-label["+$constructionstatus+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+//*********Marketing and Photos************
+
+function fnAutoSelectShowOnInternet($showoninternet) {
+	_setSelected($_SHOW_ON_INTERNET, $showoninternet);
+}
+
+function fnAutoSelectListAddrFormat($addrformat){
+	_setSelected($_LIST_ADDR_FORMAT, $addrformat);
+}
+function fnAutoSelectVOWIDXAVM($vowidxavm){
+	_setSelected($_VOWIDXAVM, $vowidxavm);
+}
+function fnAutoSelectVOWIDXCOMMENTS($vowidxcom){
+	_setSelected($_VOWIDXCOMMENTS, $vowidxcom);
+}
+
+//***************For Agents****************
+function fnAutoSelectCommType($commtype){
+	_setSelected($_COMMISSION_TYPE, $commtype);
+}
+function fnAutoSelectListingType($listingtype){
+	_setSelected($_LISTING_TYPE, $listingtype);
+}
+function fnAutoSelectDisclosuresHazard($disclosureshazard1, $disclosureshazard2){
+	_click($_DISCLOSURES_HAZARD);
+	_click(_div("select2-result-label["+$disclosureshazard1+"]"));
+	_click(_div("select2-result-label["+$disclosureshazard2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectOccupiedBy($occupiedby){
+	_setSelected($_OCCUPIED_BY, $occupiedby);
+}
+function fnAutoSelectShowingInstruction($showinstruction1, $showinstruction2){
+	_click($_SHOWING_INSTRUCTION);
+	_click(_div("select2-result-label["+$showinstruction1+"]"));
+	_click(_div("select2-result-label["+$showinstruction2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+//non-required fields
+function fnAutoSelectListingService($listingservice){
+	_setSelected($_LISTING_SERVICE, $listingservice);
+}
+function fnAutoSelectDualVariable($dualvariable){	
+	_setSelected($_DUAL_VARIABLE, $dualvariable);
+}
+function fnAutoSelectDisclosuresOther($disclosuresother1, $disclosuresother2){
+	_click($_DISCLOSURES_OTHER);
+	_click(_div("select2-result-label["+$disclosuresother1+"]"));
+	_click(_div("select2-result-label["+$disclosuresother2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+function fnAutoSelectGreenRatedHome($greenrated){
+	_setSelected($_GREEN_RATED_HOME, $greenrated);
+}
+function fnAutoSelectTICAgreement($ticagreement){
+	_setSelected($_TIC_AGREEMENT, $ticagreement);
+}
+function fnAutoSelectShowingContactType($showcontacttype){
+	_setSelected($_SHOWING_CONTACT_TYPE, $showcontacttype);
+}
+
+//***********************Exclusion listing***********************
+
+function fnAutoEnterExclusionDate(){
+	var $enow = new Date();
+	var $exclusiondate = $enow.getDate();
+	_setValue($_EXCLUSION_DATE, $exclusiondate);
+	_click(_label("Exclusion Date"));
+}
+
+function fnAutoEnterListingExpirationDate($listingexpirationdate){
+	_setValue($_LISTING_EXPIRATION_DATE, $listingexpirationdate);
+	_click(_label("Listing Expiration Date"));
+}
+
+//**********************************
+//*************class 3****************
+function fnAutoSelectTaxType($taxtype){
+	_setSelected($_TAX_TYPE, $taxtype);
+}
+
+function fnAutoParkHomeSiteDesc($parkhomesitedesc1, $parkhomesitedesc2){
+	_click($_PARK_HOME_SITE_DESC);
+	_click(_div("select2-result-label["+$parkhomesitedesc1+"]"));
+	_click(_div("select2-result-label["+$parkhomesitedesc2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+function fnAutoSelectParkAmenities($parkamenities1, $parkamenities2){
+	_click($_PARK_AMENITIES);
+	_click(_div("select2-result-label["+$parkamenities1+"]"));
+	_click(_div("select2-result-label["+$parkamenities2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+function fnAutoSelectParkRestrictions($parkrestrictions1, $parkrestrictions2){
+	_click($_PARK_RESTRICTIONS);
+	_click(_div("select2-result-label["+$parkrestrictions1+"]"));
+	_click(_div("select2-result-label["+$parkrestrictions2+"]"));
+	_click(_div("select2-drop-mask"));
+}
+
+
+
+

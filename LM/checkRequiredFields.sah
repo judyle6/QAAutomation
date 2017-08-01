@@ -1,0 +1,126 @@
+_include("lm_repos.sah");
+_include("function_lib.sah");
+
+var $url;
+_set($url, window.document.location.href);
+if ($url.indexOf("staging")!=-1)
+    {
+    fnClareityLogin("00859506", "password1");
+	var $dbServer = "172.40.3.152";
+    }
+else{
+	fnNonClareityLogin("00859506", "password1");
+	var $dbServer = "172.20.5.91";
+    }
+var $dbUser = "developers";
+var $dbPass = "devpassword";
+var $dbName = "SPEProperty"; 
+var $db = _getDB("com.microsoft.sqlserver.jdbc.SQLServerDriver","jdbc:sqlserver://"+$dbServer+";databaseName="+$dbName+"", $dbUser, $dbPass);
+
+$sqlquery = "select d1.value + ' ' + d2.value as listaddr " +
+"from [dbo].[DraftItem] d1 join [dbo].[DraftItem] d2 on d1.draftid = d2.draftid " +
+"where d1.draftid = (select top 1 dd.draftid from [dbo].[Draft] dd " +
+"join [dbo].[DraftItem] d3 on dd.draftid = d3.draftid " +
+"where dd.licensenumber = '00859506' and d3.name = 'subclass' and d3.value = 102 order by 1 desc) " +
+"and d1.name='streetnumber' " +
+"and d2.name='streetname'";
+
+// get all rows from a table...
+var $rows = $db.select($sqlquery);
+var $resultSet = $rows[0];
+var $edraft = $resultSet[0];
+
+//_alert($rows.length); // output number of rows returned...
+//_alert($rows[0].toString()); // output the first row returned
+
+_click($_LINK_MY_LISTINGS);
+_selectWindow("My Listings");
+//_click($_LINK_DRAFTS);
+//fnSelectAndEditDraft($edraft);
+
+_click($_BUTTON_ADD_LISTING_1);
+_click($_LINK_NEW_LISTING_1);
+
+fnSelectPropertyClass("Residential");
+fnSelectPropertyType("Single Family Home");
+
+_selectWindow("NewListing");
+_click($_LINK_SHOW_REQUIRED_FIELDS_ONLY);
+
+//*************Start a listing******************
+_assertTrue(_isVisible(_span("required", _in(_label("Building Type")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Listing Office")))));
+//_assertTrue(_isVisible(_span("required", _in(_label("Listing Agent")))));
+_click($_SUBMIT_NEXT_STEP);
+
+//*************Property overview******************
+_assertTrue(_isVisible(_span("required", _in(_label("APN")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Zip")))));
+_assertTrue(_isVisible(_span("required", _in(_label("County")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Street Number")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Street Name")))));
+_assertTrue(_isVisible(_span("required", _in(_label("State")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Lot(SqFt)")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Beds")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Full Bath")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Living Space(SqFt)")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Year Built")))));
+_assertTrue(_isVisible(_span("required ", _in(_label("Zoning")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Area")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Elementary School District")))));
+_assertTrue(_isVisible(_span("required", _in(_label("High School District")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Cross Street")))));
+_click($_SUBMIT_NEXT_STEP_1);
+
+//*************Listing Details******************
+_assertTrue(_isVisible(_span("required", _in(_label("Listing Status")))));
+_assertTrue(_isVisible(_span("required", _in(_label("List Date")))));
+_assertTrue(_isVisible(_span("required", _in(_label("List Price")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Expiration Date")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Special Listing Conditions")))));
+_click($_SUBMIT_NEXT_STEP_2);
+
+//*************Interior Features******************
+_assertTrue(_isVisible(_span("required", _in(_label("Fireplace Y/N")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Cooling")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Dining Room")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Family Room")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Heating")))));
+_click($_SUBMIT_NEXT_STEP_3);
+
+//*************Exterior Features******************
+_assertTrue(_isVisible(_span("required", _in(_label("Is this a Horse Property?")))));
+_assertTrue(_isVisible(_span("required", _in(_label("# Garage Spaces")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Parking")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Utilities")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Water")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Sewer")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Foundation")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Roof")))));
+_click($_SUBMIT_NEXT_STEP_4);
+
+//*************Community Info******************
+_assertTrue(_isVisible(_span("required", _in(_label("Is this property in a Community?")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Is there an HOA?")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Is this a New Construction?")))));
+_click($_SUBMIT_NEXT_STEP_5);
+
+//*************Marketing Photos******************
+_assertTrue(_isVisible(_span("required", _in(_label("Do you want this listing on the Internet?")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Public Listing Address Format")))));
+_assertTrue(_isVisible(_span("required", _in(_label("VOW-IDX AVM")))));
+_assertTrue(_isVisible(_span("required", _in(_label("VOW-IDX Comments")))));
+_click($_SUBMIT_NEXT_STEP_6);
+
+//*************For Agents******************
+_assertTrue(_isVisible(_span("required", _in(_label("Commission / Unit")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Listing Type")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Hazard Disclosures")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Occupied By")))));
+_assertTrue(_isVisible(_span("required", _in(_label("Showing Instructions")))));
+
+
+
+
+
+

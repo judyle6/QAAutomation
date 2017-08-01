@@ -1,0 +1,260 @@
+_include("../function_lib.sah");
+_include("../lm_repos.sah");
+
+var $url;
+_set($url, window.document.location.href);
+if ($url.indexOf("staging")!=-1)
+    {
+    fnClareityLogin("00859506", "password1");
+	var $dbServer = "172.40.3.152";
+    }
+else{
+	fnNonClareityLogin("00859506", "password1");
+	var $dbServer = "172.20.5.91";
+    }
+var $dbUser = "developers";
+var $dbPass = "devpassword";
+var $dbName = "SPEProperty"; 
+var $db = _getDB("com.microsoft.sqlserver.jdbc.SQLServerDriver","jdbc:sqlserver://"+$dbServer+";databaseName="+$dbName+"", $dbUser, $dbPass);
+ 
+// get all rows from a table...
+var $rows = $db.select("select top 1 a.parcelnumber, a.postalcode " +
+"from vProperty a join (select parcelnumber, count(propertyid) as tcnt from vProperty where countyid = 43 " +
+"group by parcelnumber " +
+"having count(propertyid)=1) b  " +
+"on a.parcelnumber = b.parcelnumber and  subclass=101 and a.listingstatus = 5"); 
+//_alert($rows.length); // output number of rows returned...
+//_alert($rows[0].toString()); // output the first row returned
+
+var $resultSet = $rows[0];
+var $apn = $resultSet[0];
+var $postalcode = $resultSet[1];
+
+_click($_LINK_MY_LISTINGS);
+_selectWindow("My Listings");
+_click($_BUTTON_BTN_BTN_PRIMARY_DROPDOWN_TOGGLE_1);
+_click($_LINK_NEW_COMING_SOON_1);
+_check($_CHECKBOX_COMINGSOONTERMSCHECKBOX);
+_click($_LINK_OK);
+//_click($_LINK_SELECT_A_CLASS);
+
+fnSelectPropertyClass("Residential");
+fnSelectPropertyType("Single Family Home");
+
+_selectWindow("NewListing");
+
+fnAutoSelectBuildingType(1);
+
+fnAutoSelectListingOffice(1);
+fnAutoSelectListingAgent(1);
+fnAutoSelectCoListingOffice(1);
+fnAutoSelectCoListingAgent(1);
+
+_click($_SUBMIT_NEXT_STEP);
+
+//*********Property Overview**********
+fnEnterAPN($apn);
+fnEnterZip($postalcode);
+fnAutoEnterCounty("Santa Clara");
+
+_click($_BUTTON_GET_TAX_DATA);
+//_click($_SUBMIT_IGNORE);
+//_click($_SUBMIT_I_UNDERSTAND_THE_RISK_AND_WANT_TO_CONTINUE_MANUALLY);
+_click($_SUBMIT_IMPORT_TAX_DATA );
+
+//fnEnterOwner($owner);
+//fnEnterStreetNum($mapNumber);
+//fnEnterStreetName($mapStreet);
+//fnEnterCity($mapCity);
+//fnSelectState($state);
+//fnEnterLot($lot);
+//fnEnterBeds($beds);
+//fnEnterFullBaths($fullBaths);
+//fnEnterBuildingSqft($buildingSqft);
+//fnEnterYearBuilt($yearBuilt);
+//fnEnterZoning($zone);
+fnEnterArea($area);
+fnAutoSelectElemSchoolDist(1);
+fnAutoSelectHighSchoolDist(1);
+fnEnterCrossStreet($crossStreet);
+
+//non-required fields
+//fnEnterOwner($owner);
+//fnSelectStreetPrefix($streetPrefix);
+//fnSelectStreetSuffix($streetSuffix);
+fnEnterUnitNum($unitNum);
+fnEnterModelName($modelName);
+fnEnterLotAcres($lotAcres);
+fnEnterStories($numOfStories);
+fnAutoSelectPropertyFaces(4);
+fnEnterPartialBaths($partialBaths);
+fnAutoSelectSecondaryLivingDesc(2);
+fnEnterSecondaryLivingSqft($secondaryLivingSqft);
+fnEnterLandUse($landUse);
+fnAutoSelectElemSchool(1);
+fnAutoSelectMiddleSchool(1);
+fnAutoSelectHighSchool(1);
+fnAutoSelectPropCityLimits(1);
+fnAutoSelectPropIncorporatedArea(1);
+fnEnterDirections($directions);
+
+_click($_SUBMIT_NEXT_STEP_1);
+
+//********Listing Details*********
+//fnAutoSelectStatus(1);
+fnAutoEnterPreMarketDate();
+fnEnterPreMarketPrice($preMarketPrice);
+fnAutoEnterListAgreeExpireDate("12/01/2017");
+fnAutoSelectSpecialListingCondition(6);
+
+//non-required fields
+fnAutoSelectPointOfSaleOrdinance(1);
+fnAutoSelectCityTransferTax(1);
+fnAutoSelectPossessionNotice(2);
+fnAutoSelectFinanceTerm(1, 4);
+fnEnterAssumeLoans($totalAssumeLoans);
+fnEnterAssumeLoanRate($assumeLoanRate);
+fnEnterCashToAssume($cashToAssume);
+fnEnterMonthlyPayment($monthlyPayment);
+fnEnterCurrentRent($currentRent);
+
+_click($_SUBMIT_NEXT_STEP_2);
+
+//*******Interior Features*********
+fnAutoSelectFireplace(1);
+if ($firePlace = "Yes") {
+	fnAutoSelectFireplaceFeatures(4, 9);
+}
+fnAutoSelectCooling(1, 4);
+fnAutoSelectDiningRoomFeatures(7, 10);
+fnAutoSelectFamilyRoomFeatures(2);
+fnAutoSelectHeating(1, 3, 7);
+
+//non-required fields
+fnEnterNumFireplaces($numOfFireplaces);
+fnAutoSelectAccessibilityFeatures(1, 6);
+fnAutoSelectBathFeatures(6, 9);
+fnAutoSelectBedFeatures(1, 2);
+fnAutoSelectCommunications(1, 2);
+fnAutoSelectFlooring(2, 3);
+fnAutoSelectInteriorAmenities(1, 2);
+fnAutoSelectKitchen(3, 6);
+fnAutoSelectLaundry(2, 3);
+fnAutoSelectOtherRooms(3, 5);
+fnAutoSelectSecurityFeatures(1, 3);
+
+_click($_SUBMIT_NEXT_STEP_3);
+
+//**********Exterior Features*************
+fnAutoSelectHorseProp(2);
+if ($horseProp = "Yes") {
+	fnAutoSelectHorsePropFeatures(3, 8);
+}
+fnEnterGarage($garage);
+fnAutoSelectParkingFeatures(3,7);
+fnAutoSelectUtilities(1,2);
+fnAutoSelectWater(2,5);
+fnAutoSelectSewer(1,2);
+fnAutoSelectFoundation(3,4);
+fnAutoSelectRoof(1,2);
+
+//non-required fields
+fnAutoSelectPoolYN(1);
+fnAutoSelectPoolFeatures(7,9,13);
+fnEnterCarport($carport);
+fnEnterOpenParking($openParking);
+fnAutoSelectConstructionType(4,8);
+fnAutoSelectEnergySavingFeatures(4,7);
+fnAutoSelectExteriorAmenities(2,3);
+fnAutoSelectFence(2,3);
+fnAutoSelectLotDescription(3,4);
+fnAutoSelectOtherStructures(2,4);
+fnEnterOtherStructureSize($otherStructureSize);
+fnEnterOtherStructureDescription($otherStructureDesc);
+fnAutoSelectPropertyCondition(0,1);
+fnAutoSelectSoilDescription(4,5);
+fnAutoSelectStyle(3,6);
+fnAutoSelectViewDescription(3,4);
+
+_click($_SUBMIT_NEXT_STEP_4);
+
+//*********Community Info**************
+fnAutoCommunityYN(0);
+if ($commYN = "Yes") {
+	fnAutoSelectCommRestrictions(3,4);
+	//non-required fields
+	fnEnterCommName($communityName);
+	fnEnterNumberOfUnitsInComm($NumOfUnitsInComm)
+	fnAutoSelectCommAmenities(1,4);
+}
+fnAutoHOAYN(1);
+if ($hoaYN = "Yes") {
+	fnEnterHOAName($hoaName);
+	fnEnterHOAFee($hoaFee);
+	fnAutoSelectHOAFeeCovers(3,4);
+	//non-required fields
+	fnEnterHOAPhone($hoaPhone);
+	fnAutoSelectHOAFeeFrequency(1);
+	fnAutoSelectHOADocuments(2,6);
+	fnEnterHOATransferFee($hoaTransferFee);
+	fnEnterHOADocFee($hoaDocFee);
+}
+fnAutoNewConstruction(1);
+if ($newConstruction = "Yes"){
+	fnAutoSelectConstructionStatus(3);
+	fnEnterEstCompletionDate($completionDate);
+	fnEnterPriceRangeLow($priceRangeLow);
+	fnEnterPriceRangeHigh($priceRangeHigh);
+}
+
+//non-required fields
+fnEnterBuilderName($builderName);
+fnEnterTractName($tractName);
+
+_click($_SUBMIT_NEXT_STEP_5);
+
+//*********Marketing and Photos***********
+fnAutoSelectShowOnInternet(1);
+if ($showOnInternet = "Yes") {
+	fnAutoSelectListAddrFormat(2);
+	fnAutoSelectVOWIDXAVM(1);
+	fnAutoSelectVOWIDXCOMMENTS(1);
+}
+
+//non-required fields
+fnEnterBrandedVTURL($brandedVT);
+fnEnterUnbrandedVTURL($unbrandedVT);
+fnEnterPublicRemarks($publicRemarks);
+
+_click($_SUBMIT_NEXT_STEP_6);
+
+//*********For Agents*************
+fnEnterCommission($commission);
+fnAutoSelectCommType(1);
+fnAutoSelectListingType(2);
+fnAutoSelectDisclosuresHazard(2,6);
+fnAutoSelectOccupiedBy(3);
+fnAutoSelectShowingInstruction(3,8);
+
+//non-required fields
+fnAutoSelectDualVariable(1);
+fnEnterPrivateRemarks($privateRemarks);
+fnAutoSelectListingService(1);
+fnAutoSelectDisclosuresOther(5,11);
+fnAutoSelectGreenRatedHome(1);
+fnAutoSelectTICAgreement(1);
+fnEnterURL($disclosureURL);
+fnEnterShowingContact($showingContact);
+fnAutoSelectShowingContactType(1);
+fnEnterShowingContactPhone($showingContactPhone);
+fnEnterAdditionalShowingInstructions($addShowingInstructions);
+fnEnterGateCode($gateCode);
+
+_click($_SUBMIT_NEXT_STEP_7);
+_click($_SUBMIT_NEXT_STEP_8);
+
+_click($_SUBMIT_CREATE_LISTING);
+_selectWindow("NewListing");
+_click($_CONFIRM_SUBMIT_YES);
+_click($_LINK_CLOSE);
+
